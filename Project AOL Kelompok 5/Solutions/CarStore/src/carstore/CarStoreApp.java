@@ -2,8 +2,8 @@ package carstore;
 
 /*
  * Smell Code: The comments
- * Reason: Ada comment yang diberikan untuk menjelaskan kode atau funtion
- * Soulution: Delete comments
+ * Reason: Ada comment yang diberikan untuk menjelaskan kode atau function yang kurang jelas karena adanya penamaan variabel yang tidak sesuai.
+ * Soulution: Delete comments dan memperbaiki penamaan variabel
  */
 
 /*
