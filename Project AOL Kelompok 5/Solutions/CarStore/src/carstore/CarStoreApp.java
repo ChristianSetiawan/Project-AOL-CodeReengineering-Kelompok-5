@@ -1,4 +1,11 @@
 package carstore;
+
+/*
+ * Smell Code: The comments
+ * Reason: Ada comment yang diberikan untuk menjelaskan kode atau funtion
+ * Soulution: Delete comments
+ */
+
 /*
 Authors:  All Group
 partener and correction : the leader of team Wafaa Elsaeed
@@ -10,95 +17,79 @@ import java.util.Scanner;
 public class CarStoreApp {
     public static void main(String[] args) {
 
-        //car store
-        CarStore f = new CarStore ("The Car Store","2520 N Salisbury Blvd",
-                "(410) 334-3500","http://thecarstoreonline.com/",0);
-             System.out.print(  f.toString() +"\n");
-             printline();
+        CarStore newCarStore = new CarStore ("The Car Store","2520 N Salisbury Blvd", "(410) 334-3500","http://thecarstoreonline.com/",0);
+        System.out.print(  newCarStore.toString() +"\n");
+        printline();
             
              
-             
-             
-         //  insert cars 
-            for(int i =1 ; i<=10 ;i++){
-                
-        Vehicle mac  = new NewCar( randomModel(randomMake()),randomMake(),  randomCountry(),
-        randomColour(),  randomFuelType(),i,randomNumber(300,150), randomNumber(15,9),randomNumber(50000,17000)
-        ,randomNumber(2017,1995) ,randomBoolean(),randomBoolean(),randomBoolean(),randomBoolean());
-        
-        f.insertCar(mac);}
+        for(int i =1 ; i<=10 ;i++){
+            Vehicle mac  = new NewCar( randomModel(randomMake()),randomMake(),  randomCountry(),
+            randomColour(),  randomFuelType(),i,randomNumber(300,150), randomNumber(15,9),randomNumber(50000,17000),randomNumber(2017,1995) ,randomBoolean(),randomBoolean(),randomBoolean(),randomBoolean());
+
+            newCarStore.insertCar(mac);
+        }
           
         System.out.println("model \t\t\t make  \t madeIn  \tcolour  FuelType  \tYearIntroduced       "   
                 + "\tspeed \t ID"
                 + "\tpower \t price"
                 + "\n");
-        f.showInventory();
+        newCarStore.showInventory();
         printline() ;
         
         
-        
-        
-        //  inert staff
          for(int i =1 ; i<=9 ;i++){
-        Staff s = new Staff(randomName(), randomCountry(),  randomNumber(23432525,23456721)+"",
-        "employee"+i+"@carStore.com",i,randomPosition(),randomNumber(25532,20000),randomNumber
-        (7000,3000));
-        
-        f.insertEmployee(s);}
+            Staff staff = new Staff(randomName(), randomCountry(),  randomNumber(23432525,23456721)+"", "employee"+i+"@carStore.com",i,
+            randomPosition(),randomNumber(25532,20000),randomNumber
+            (7000,3000));
+            
+            newCarStore.insertEmployee(staff);
+        }
          
          System.out.println("Name\t Address     \t Contact Number            E-mail                  ID        "
                  + "        Position    "
                  + "                saraly      retire       ");
          
-        f.showStaffDetails();
+        newCarStore.showStaffDetails();
         printline() ;
        
         
        
-      // insert customer
       for(int i =1 ; i<=9 ;i++){
-         Customer c = new Customer(randomName(),randomCountry(),randomNumber(23432525,23456721)+"",
+         Customer customer = new Customer(randomName(),randomCountry(),randomNumber(23432525,23456721)+"",
          "customer000"+i+"@gmail.com",i);
          
-         f.insertCustomer(c);}
+         newCarStore.insertCustomer(customer);}
       
          System.out.println("Name\t Address     \t Contact Number            E-mail                  ID "  );
          
-         f.showCustomersDetails() ;
+         newCarStore.showCustomersDetails() ;
          printline() ;
          
-     System.out.println(f.searseCar(6).toString());
+     System.out.println(newCarStore.searseCar(6).toString());
              printline() ;
              
-      // buying process
-      System.out.print(buyCar(f));
+      System.out.print(buyCar(newCarStore));
       printline() ;
 
       
-      //test of search and delete of customer ,staff and cars 
      System.out.println("test of search and delete of customer ,staff and cars ");
-      Scanner g = new Scanner(System.in);
+      Scanner scan = new Scanner(System.in);
       
       System.out.println("Entr Id of items u want to delet or search " );
-      int ID = g.nextInt();
+      int ID = scan.nextInt();
       
-      //search about customer 
-       System.out.println(f.searseCustomer(ID).toString());
+       System.out.println(newCarStore.searseCustomer(ID).toString());
        printline() ;
 
-      //searh about  employee
-     System.out.println(  f.searseStaff(ID).toString());
+     System.out.println(  newCarStore.searseStaff(ID).toString());
      printline() ;
 
      
-      //delet Employee
-       f.deleteEmpoyee(ID);
+       newCarStore.deleteEmpoyee(ID);
        
-      //delet vehicle
-      f.deleteCar(ID);
-      
-      //delect customer  
-      f.deleteCustomer(ID);
+      newCarStore.deleteCar(ID);
+       
+      newCarStore.deleteCustomer(ID);
       
       
     }
@@ -114,7 +105,7 @@ public class CarStoreApp {
      Return : string
      Description :- methed  that inteact with customer to buy car and make this process easy 
      */
-     public  static String buyCar(CarStore d){
+     public  static String buyCar(CarStore carStore){
          String result =null ;
         System.out.println("welcome  to The Car store :)\n "
                 + "for veiw inventory enter 1 \n"
@@ -122,49 +113,48 @@ public class CarStoreApp {
                 + "for search by model enter 3 \n"
                 + "for search by make entre  4 \n");
         
-        Scanner s =new Scanner(System.in);
-        int choise =s.nextInt();
+        Scanner scan =new Scanner(System.in);
+        int choise =scan.nextInt();
         
         switch(choise){
-            case 1:{ d.showInventory();}break;
+            case 1:{ carStore.showInventory();}break;
             
             case 2:{ 
                  System.out.println("Enter from and to price plz :)");
-                 double from= s.nextDouble() ;double to =s.nextDouble();
-                 d.searchByPrice(from, to); }break;
+                 double from= scan.nextDouble() ;double to =scan.nextDouble();
+                 carStore.searchByPrice(from, to); }break;
             
             case 3:{               
                  System.out.println("Enter model plz :)");
-                 String model =s.nextLine();
-                 d.searchByModel(model);}break;
+                 String model =scan.nextLine();
+                 carStore.searchByModel(model);}break;
             case 4:{   
                  System.out.println("Enter model plz :)");
-                 String make =s.nextLine();
-                 d.searchByMake(make);}break;}
+                 String make =scan.nextLine();
+                 carStore.searchByMake(make);}break;}
         System.out.println("then is there any car u liked it :D plz enter 1 if u want to buy it entre any 0 if there dont");
-        int choise2 =s.nextInt();
+        int choise2 =scan.nextInt();
         if(choise2==1){ 
             System.out.println("then entre it ID ");
-            int ID = s.nextInt();
-             Vehicle car =d.searseCar(ID);
+            int ID = scan.nextInt();
+             Vehicle car =carStore.searseCar(ID);
              System.out.print("here is it all details  ");
             System.out.println( car.toString());
             System.out.print( "sure u want it then go to fainlize put it price");
-                double price = s.nextDouble();
-                           //check price
+                double price = scan.nextDouble();
                 while(checkPrice(price,car.price)!=true){
-                System.out.println("plz reput price as it lass than car price");
-                 price =s.nextInt();
+                    System.out.println("plz reput price as it lass than car price");
+                    price =scan.nextInt();
                 }
            System.out.print(  "  Enter this details ur name address cintact number email ");
-           String name = s.nextLine();
-           String address = s.nextLine();
-           String  contactNumber = s.nextLine();
-           String email = s.nextLine();
+           String name = scan.nextLine();
+           String address = scan.nextLine();
+           String  contactNumber = scan.nextLine();
+           String email = scan.nextLine();
            Customer l =new Customer(name,address,contactNumber,email,0);
-           d.insertCustomer(l);
+           carStore.insertCustomer(l);
            result="name of customer :"+l.getName()+
-                  "\nname of store    :  "+d.name
+                  "\nname of store    :  "+carStore.name
                  +"\ncar model        :" + car.model+
                   "\npaid price       :"+car.price
                 + "\n remain          :"+ (price-car.price);}
@@ -201,20 +191,17 @@ public class CarStoreApp {
      
      
      
-     // random number
-          public static int randomNumber(int up,int lower){
+    public static int randomNumber(int up,int lower){
         return (int)(Math.random()*(up-lower)+lower);
     }
 
      
      
-     //random boolean
-     public static boolean randomBoolean(){
-    return Math.random() < 0.5;
-}
+    public static boolean randomBoolean(){
+        return Math.random() < 0.5;
+    }
      
      
-     //random names
       public static String randomName(){
            int random= (int)(Math.random()*11);
        switch(random){
@@ -233,7 +220,6 @@ public class CarStoreApp {
            default:return "UN RECHABLE CODE!";
        }}
       
-      //random positions
       public static String randomPosition(){
            int random= (int)(Math.random()*10);
        switch(random){
@@ -252,7 +238,6 @@ public class CarStoreApp {
        }}
       
       
-     //   random colour
       public static String randomColour(){
            int random= (int)(Math.random()*11);
        switch(random){
@@ -272,7 +257,6 @@ public class CarStoreApp {
        }}
       
       
-        //   random make
       public static String randomMake(){
            int random= (int)(Math.random()*5);
        switch(random){
@@ -287,7 +271,6 @@ public class CarStoreApp {
     } 
       
       
-      //random Model
        public static String randomModel(String make){
            String model = null ;
            int random= (int)(Math.random()*2);
@@ -332,8 +315,7 @@ public class CarStoreApp {
        
        
        
-       
-          // random country     
+        
         public static String randomCountry(){
            int random= (int)(Math.random()*11);
        switch(random){
@@ -354,7 +336,6 @@ public class CarStoreApp {
     } 
         
         
-         // random fuel type
          public static String randomFuelType(){
            int random= (int)(Math.random()*4);
        switch(random){
