@@ -19,7 +19,7 @@ import java.util.HashMap;
     
     // car store  has a three hashmaps that showing staff,customers and inventory 
     private  HashMap <Integer,Staff> staff = new HashMap<>() ;
-    private  HashMap <Integer,Customer> customers = new HashMap<>() ;
+    private HashMap<Integer, Profile> customers = new HashMap<>();
     private  HashMap <Integer,Vehicle> inventory = new HashMap<>() ;
 
   
@@ -51,13 +51,14 @@ import java.util.HashMap;
     
     // Customer
     
-   public void insertCustomer(  Customer customer){
-  customers.put(customer.getId(), customer);}
-   
-   
-    public Customer searseCustomer(int ID){
-    return customers.get(ID);
-    }
+    public void insertCustomer(Profile customer){
+      customers.put(customer.getId(), customer);
+  }
+
+  public Profile searseCustomer(int ID){
+      return customers.get(ID);
+  }
+
     
     
     public void deleteCustomer(int ID){
@@ -163,10 +164,11 @@ Return :no thing
 Description :- show  the basic details of  all Customers in Car store
 */
    public void showCustomersDetails(){
-  for (int key :customers.keySet()){
-  System.out.println(customers.get(key).toString());
-  }  
- }
+    for (int key :customers.keySet()){
+        System.out.println(customers.get(key).toString());
+    }  
+}
+
    
    
  /*

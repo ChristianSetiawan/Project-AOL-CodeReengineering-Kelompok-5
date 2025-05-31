@@ -55,7 +55,7 @@ public class CarStoreApp {
         
        
       for(int i =1 ; i<=9 ;i++){
-         Customer customer = new Customer(randomName(),randomCountry(),randomNumber(23432525,23456721)+"",
+         Profile customer = new Profile(randomName(),randomCountry(),randomNumber(23432525,23456721)+"",
          "customer000"+i+"@gmail.com",i);
          
          newCarStore.insertCustomer(customer);}
@@ -151,8 +151,9 @@ public class CarStoreApp {
            String address = scan.nextLine();
            String  contactNumber = scan.nextLine();
            String email = scan.nextLine();
-           Customer l =new Customer(name,address,contactNumber,email,0);
-           carStore.insertCustomer(l);
+           Profile l = new Profile(name, address, contactNumber, email, 0);
+        carStore.insertCustomer(l);
+
            result="name of customer :"+l.getName()+
                   "\nname of store    :  "+carStore.name
                  +"\ncar model        :" + car.model+

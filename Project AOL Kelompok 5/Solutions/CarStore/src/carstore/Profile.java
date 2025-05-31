@@ -8,6 +8,14 @@ Summary of Profile:
 2- to reduce the code written 
 */
 
+
+// smell code : Data class
+// reason : Sudah ada constructor ada setter lagi
+// solution : remove setter and use constructor only
+
+//smell code : primitive obsession
+// reason : ID is int, email is String, contactNumber is String
+// solution : use wrapper class for ID, email, and contactNumber
 public class Profile {
     
     
@@ -94,9 +102,9 @@ return c; }
 
 @Override
 public boolean equals (Object o){
-    Customer c = (Customer)o ;
-       return c.getName().equals(name)&&c.getAddress().equals(address)&&
-               c.getContactNumber()==contactNumber&&c.getEmail().equals(email)&&c.getId()==ID;
+     Profile p = (Profile) o;
+    return ID == p.ID &&
+           name.equals(p.name) && address.equals(p.address) && contactNumber.equals(p.contactNumber) && email.equals(p.email);
 }
 
   
